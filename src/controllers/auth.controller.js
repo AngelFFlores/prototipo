@@ -9,7 +9,8 @@ export const register = async (req, res) => {
       password
     })
 
-    await newUser.save()
+    const userSaved = await newUser.save()
+    res.json(userSaved)
   } catch (error) {
     console.log(error)
   }
