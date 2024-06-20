@@ -20,7 +20,7 @@ export const RegisterPage = (() => {
             <input className="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500" required type="text" {...register("username", { required: true })} />
           </div>
           <div class="mb-4">
-            <label className="block text-gray-700 text-sm font-semibold mb-2">Correo electornico *</label>
+            <label className="block text-gray-700 text-sm font-semibold mb-2">Correo electronico *</label>
             <input className="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500" required type="email" {...register("email", { required: true })} />
           </div>
           <div class="mb-4">
@@ -28,7 +28,6 @@ export const RegisterPage = (() => {
             <input className="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500" required type="password" {...register("password", { required: true })} />
             <p class="text-gray-600 text-xs mt-1">Debe contener mínimo 6 caracteres.</p>
           </div>
-
           <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
             Registrar
           </button>
