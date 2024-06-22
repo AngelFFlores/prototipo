@@ -1,15 +1,24 @@
+import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import usercircle from "../assets/user_circle.svg"
 import { useAuth } from "../context/AuthContext.jsx"
+import { useNavigate } from "react-router-dom"
 import { Link } from 'react-router-dom'
 
 export const LoginPage = (() => {
   const { register, handleSubmit, formState: { errors } } = useForm()
-  const { sigNin, errors: LoginErros } = useAuth()
+  const { sigNin, errors: LoginErros, isAuthenticated } = useAuth()
+  const navigation = useNavigate()
 
   const onSubmit = handleSubmit((data) => {
     sigNin(data)
   })
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigation('/')
+    }
+  }, [isAuthenticated])
 
   return (
     <div className="bg-gray-100 flex items-center justify-center h-screen">
