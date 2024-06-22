@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 
 const Navbar = (() => {
   const [statusMenu, setStatusMenu] = useState(false)
+  const { isAuthenticated, logout } = useAuth()
 
   const openMenu = (() => {
     setStatusMenu(prevStatus => !prevStatus);
   })
 
+  if (!isAuthenticated) return null
   return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -47,24 +51,17 @@ const Navbar = (() => {
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
-                <a
-                  href="#"
-                  className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                  aria-current="page"
-                >
+                <Link to="/" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
                   Home
-                </a>
+                </Link>
+                <Link to="/profile" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                  Perfil
+                </Link>
                 <a
                   href="#"
                   className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
-                  Pagos
-                </a>
-                <a
-                  href="#"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >
-                  Reservacioes
+                  Reservaciones
                 </a>
                 <a
                   href="#"
@@ -72,6 +69,9 @@ const Navbar = (() => {
                 >
                   Comunicados
                 </a>
+                <Link to="/" onClick={() => { logout() }} className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                  Logout
+                </Link>
               </div>
             </div>
           </div>
@@ -123,19 +123,12 @@ const Navbar = (() => {
       {/* Mobile */}
       <div className="sm:hidden transition-all transform" id="mobile-menu" style={{ display: statusMenu ? 'block' : 'none' }}>
         <div className="space-y-1 px-2 pb-3 pt-2">
-          <a
-            href="#"
-            className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-            aria-current="page"
-          >
+          <Link to="/" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
             Home
-          </a>
-          <a
-            href="#"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-          >
-            Pagos
-          </a>
+          </Link>
+          <Link to="/profile" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+            Perfil
+          </Link>
           <a
             href="#"
             className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
