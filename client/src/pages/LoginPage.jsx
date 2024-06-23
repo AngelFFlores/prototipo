@@ -22,7 +22,7 @@ export const LoginPage = (() => {
 
   return (
     <div className="bg-gray-100 flex items-center justify-center h-screen">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full mx-4 sm:mx-0">
         <div className="flex justify-center mb-6">
           <span className="inline-block bg-gray-200 rounded-full p-3">
             <img src={usercircle} alt="icono de usaurio" />
