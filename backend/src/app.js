@@ -17,14 +17,15 @@ app.use(cookieParser())
 
 app.use("/api", authRoutes)
 
-// Sirve archivos estáticos desde el directorio 'client/build'
-const __dirname = path.resolve();
-const buildPath = path.join(__dirname, '../client/dist/build');
-app.use(express.static(buildPath));
+//--> Debo revisar configuración dependiendo del servidor
+// // Sirve archivos estáticos desde el directorio 'client/build'
+// const __dirname = path.resolve();
+// const buildPath = path.join(__dirname, '../client/dist/build');
+// app.use(express.static(buildPath));
 
-// Redirige todas las rutas a index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(buildPath, 'index.html'));
-});
+// // Redirige todas las rutas a index.html
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(buildPath, 'index.html'));
+// });
 
 export default app
