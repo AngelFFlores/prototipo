@@ -19,7 +19,7 @@ app.use("/api", authRoutes)
 
 // Sirve archivos estáticos desde el directorio 'client/build'
 const __dirname = path.resolve();
-const buildPath = path.join(__dirname, '../client/dist');
+const buildPath = path.join(__dirname, '../client/dist/build');
 app.use(express.static(buildPath));
 
 // Redirige todas las rutas a index.html
