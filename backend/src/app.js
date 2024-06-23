@@ -3,10 +3,11 @@ import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import authRoutes from './routes/auth.routes.js'
+import { FRONTEND_URL } from './config.js'
 
 const app = express()
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  origin: FRONTEND_URL,
   credentials: true
 }))
 app.use(morgan('dev'))

@@ -1,8 +1,8 @@
 import app from './app.js'
 import { connectDB } from './db.js'
-const port = process.env.PORT || 3000
+import { PORT } from './config.js'
 
 connectDB()
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log("esta corriendo el servidor")
 })
