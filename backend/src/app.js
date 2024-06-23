@@ -17,13 +17,13 @@ app.use(cookieParser())
 
 app.use("/api", authRoutes)
 
-// Sirve archivos estáticos desde el directorio 'build'
+// Sirve archivos estáticos desde el directorio 'client/build'
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, 'build')))
+app.use(express.static(path.join(__dirname, '../client/build')))
 
 // Redirige todas las rutas a index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
 })
 
 export default app
