@@ -1,15 +1,34 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { DropDown } from '../components/DropDown.jsx'
 
 const Navbar = (() => {
   const [statusMenu, setStatusMenu] = useState(false)
   const { isAuthenticated, logout } = useAuth()
+  const [isOpen, setIsOpen] = useState(false)
 
   const openMenu = (() => {
-    setStatusMenu(prevStatus => !prevStatus);
+    setStatusMenu(prevStatus => !prevStatus)
   })
 
+  const toggleDropDown = () => {
+    setIsOpen(!isOpen)
+  }
+
+  const items = [
+    {
+      name: "Perfil",
+      link: "/profile",
+    },
+    {
+      name: "Logout",
+      link: "/",
+    },
+  ]
+  
+
+ 
   if (!isAuthenticated) return null
   return (
     <nav className="bg-gray-800">
@@ -45,7 +64,7 @@ const Navbar = (() => {
               </svg>
             </button>
           </div>
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-end">
             <div className="flex flex-shrink-0 items-center">
               {/* Logo de la aplicación */}
             </div>
@@ -53,9 +72,6 @@ const Navbar = (() => {
               <div className="flex space-x-4">
                 <Link to="/" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
                   Home
-                </Link>
-                <Link to="/profile" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
-                  Perfil
                 </Link>
                 <a
                   href="#"
@@ -69,9 +85,6 @@ const Navbar = (() => {
                 >
                   Comunicados
                 </a>
-                <Link to="/" onClick={() => { logout() }} className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
-                  Logout
-                </Link>
               </div>
             </div>
           </div>
@@ -100,21 +113,20 @@ const Navbar = (() => {
 
             <div className="relative ml-3">
               <div>
-                <button
+                <button onClick={toggleDropDown}
                   type="button"
                   className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                   id="user-menu-button"
                   aria-expanded="false"
                   aria-haspopup="true"
                 >
-                  <span className="absolute -inset-1.5"></span>
-                  <span className="sr-only">Open user menu</span>
                   <img
                     className="h-8 w-8 rounded-full"
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt=""
                   />
                 </button>
+                <DropDown isOpenProp={isOpen} setIsOpen={setIsOpen} items={items}/>
               </div>
             </div>
           </div>
@@ -125,9 +137,6 @@ const Navbar = (() => {
         <div className="space-y-1 px-2 pb-3 pt-2">
           <Link to="/" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
             Home
-          </Link>
-          <Link to="/profile" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
-            Perfil
           </Link>
           <a
             href="#"
@@ -141,6 +150,9 @@ const Navbar = (() => {
           >
             Comunicados
           </a>
+          <Link to="/" onClick={() => { logout() }} className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+            Logout
+          </Link>
         </div>
       </div>
     </nav>
