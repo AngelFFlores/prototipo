@@ -26,9 +26,23 @@ const Navbar = (() => {
       link: "/",
     },
   ]
-  
 
- 
+  const customButtonCOntent = (
+      <button onClick={toggleDropDown}
+      type="button"
+      className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+      id="user-menu-button"
+      aria-expanded="false"
+      aria-haspopup="true"
+    >
+      <img
+        className="h-8 w-8 rounded-full"
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+    </button>
+  )
+
   if (!isAuthenticated) return null
   return (
     <nav className="bg-gray-800">
@@ -73,18 +87,19 @@ const Navbar = (() => {
                 <Link to="/" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
                   Home
                 </Link>
-                <a
-                  href="#"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >
+                <Link to="/" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
                   Reservaciones
-                </a>
-                <a
-                  href="#"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >
+                </Link>
+                <Link to="/" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
                   Comunicados
-                </a>
+                </Link>
+                <Link to="/" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                  Encuestas
+                </Link>
+                <Link to="/" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                  Incidentes
+                </Link>
+
               </div>
             </div>
           </div>
@@ -113,20 +128,7 @@ const Navbar = (() => {
 
             <div className="relative ml-3">
               <div>
-                <button onClick={toggleDropDown}
-                  type="button"
-                  className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  id="user-menu-button"
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                >
-                  <img
-                    className="h-8 w-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
-                </button>
-                <DropDown isOpenProp={isOpen} setIsOpen={setIsOpen} items={items}/>
+                <DropDown isOpen={isOpen} setIsOpen={setIsOpen} items={items} customButtonCOntent = {customButtonCOntent} />
               </div>
             </div>
           </div>
@@ -138,18 +140,18 @@ const Navbar = (() => {
           <Link to="/" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
             Home
           </Link>
-          <a
-            href="#"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-          >
-            Resrvaciones
-          </a>
-          <a
-            href="#"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-          >
+          <Link to="/" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+            Reservaciones
+          </Link>
+          <Link to="/" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
             Comunicados
-          </a>
+          </Link>
+          <Link to="/" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+            Encuestas
+          </Link>
+          <Link to="/" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+            Incidentes
+          </Link>
           <Link to="/" onClick={() => { logout() }} className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
             Logout
           </Link>
