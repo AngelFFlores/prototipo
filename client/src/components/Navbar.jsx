@@ -28,7 +28,7 @@ const Navbar = (() => {
   ]
 
   const customButtonCOntent = (
-      <button onClick={toggleDropDown}
+    <button onClick={toggleDropDown}
       type="button"
       className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
       id="user-menu-button"
@@ -128,7 +128,7 @@ const Navbar = (() => {
 
             <div className="relative ml-3">
               <div>
-                <DropDown isOpen={isOpen} setIsOpen={setIsOpen} items={items} customButtonCOntent = {customButtonCOntent} />
+                <DropDown isOpen={isOpen} setIsOpen={setIsOpen} items={items} customButtonCOntent={customButtonCOntent} />
               </div>
             </div>
           </div>
@@ -137,22 +137,22 @@ const Navbar = (() => {
       {/* Mobile */}
       <div className="sm:hidden transition-all transform" id="mobile-menu" style={{ display: statusMenu ? 'block' : 'none' }}>
         <div className="space-y-1 px-2 pb-3 pt-2">
-          <Link to="/" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <Link to="/" onClick={openMenu} className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
             Home
           </Link>
-          <Link to="/" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <Link to="/" onClick={openMenu} className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
             Reservaciones
           </Link>
-          <Link to="/" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <Link to="/" onClick={openMenu} className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
             Comunicados
           </Link>
-          <Link to="/" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <Link to="/" onClick={openMenu} className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
             Encuestas
           </Link>
-          <Link to="/" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <Link to="/" onClick={openMenu} className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
             Incidentes
           </Link>
-          <Link to="/" onClick={() => { logout() }} className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <Link to="/" onClick={() => { logout(), openMenu() }} className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
             Logout
           </Link>
         </div>
