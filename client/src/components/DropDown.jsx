@@ -36,7 +36,7 @@ export const DropDown = (({ isOpen, setIsOpen, items, customButtonCOntent }) => 
             </svg>
           </button>
         )}
-        <div className={`fixed sm:absolute z-10 right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48 transition-transform duration-200 ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}`}>
+        <div className={`min-w-[200px] absolute z-10 right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48 transition-transform duration-200 ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'}`}>
           <div className="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
             {
               items.map((item, index) => {
